@@ -16,7 +16,7 @@ def index():
 
 @app.route('/start', methods=['POST'])
 def start_sounds():
-
+    global driver
     driver = webdriver.Firefox()
 
     sound_type = request.form['sound_type']
@@ -28,6 +28,13 @@ def start_sounds():
 
     driver.find_element_by_class_name('ytp-play-button').click()
     return 'Started.'
+
+
+@app.route('/end', methods=['POST'])
+def end_sounds():
+    driver.quit()
+
+    return 'Ended.'
 
 
 if __name__ == '__main__':

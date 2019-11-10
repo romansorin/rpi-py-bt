@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>App</title>
 </head>
+
 <body>
-<h1>Click to start</h1>
-<form action="{{ url_for('start_sounds') }}" method="post">
-    <input name="sound_type" type="hidden" value="drill"/>
-    <button type="submit">Play some drill noises</button>
-</form>
-<form action="{{ url_for('start_sounds') }}" method="post">
-    <input name="sound_type" type="hidden" value="bass"/>
-    <button type="submit">Play some big ass bass</button>
-</form>
+    <h1>Click to start</h1>
+    <form action="{{ url_for('start_sounds') }}" method="post">
+        <input name="sound_type" type="hidden" value="drill" />
+        <button type="submit">Play some drill noises</button>
+    </form>
+    <form action="{{ url_for('start_sounds') }}" method="post">
+        <input name="sound_type" type="hidden" value="bass" />
+        <button type="submit">Play some big ass bass</button>
+    </form>
+
+    <h1>Click to end</h1>
+    <form action="{{ url_for('end_sounds') }}" method="post">
+        <button type="submit">End</button>
+    </form>
 </body>
+
 </html>
