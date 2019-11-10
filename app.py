@@ -8,9 +8,6 @@ app.config["DEBUG"] = True
 DRILL = 'drill'
 BASS = 'bass'
 
-display = Display(visible=0, size=(800, 600))
-display.start()
-
 
 @app.route('/', methods=['GET'])
 def index():
