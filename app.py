@@ -1,12 +1,12 @@
 #!/usr/local/bin/python3
 from flask import Flask, render_template, request
 from selenium import webdriver
-import vlc
-import time
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.config["OS"] = 'Windows'
+app.config["HOST"] = '0.0.0.0'
+app.config["PORT"] = '8090'
 
 DRILL = 'drill'
 BASS = 'bass'
@@ -49,4 +49,4 @@ def end_sounds():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8090)
+    app.run(host=app.config["HOST"], port=app.config["PORT"])
