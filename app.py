@@ -9,7 +9,9 @@ app.config["HOST"] = '0.0.0.0'
 app.config["PORT"] = '8090'
 
 DRILL = 'drill'
+DRILL_URL = 'https://www.youtube.com/watch?v=fc7XA4bo4bc'
 BASS = 'bass'
+BASS_URL = 'https://www.youtube.com/watch?v=H8pZmH5DHnQ'
 
 options = webdriver.FirefoxOptions()
 options.headless = True
@@ -33,9 +35,9 @@ def start_sounds():
     sound_type = request.form['sound_type']
 
     if sound_type == DRILL:
-        driver.get('https://www.youtube.com/watch?v=fc7XA4bo4bc&t=2683s')
+        driver.get(DRILL_URL)
     elif sound_type == BASS:
-        driver.get('https://www.youtube.com/watch?v=H8pZmH5DHnQ&t=408s')
+        driver.get(BASS_URL)
 
     driver.find_element_by_class_name('ytp-play-button').click()
     return 'Started.'
