@@ -16,7 +16,11 @@ def index():
 
 @app.route('/start', methods=['POST'])
 def start_sounds():
-    driver = webdriver.Firefox()
+
+    chromeOptions = webdriver.ChromeOptions()
+    chromeOptions.set_headless()
+    driver = webdriver.Chrome(chrome_options == chromeOptions)
+
     sound_type = request.form['sound_type']
 
     if sound_type == DRILL:
