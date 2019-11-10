@@ -18,7 +18,7 @@ def index():
 def start_sounds():
     global driver
     options = webdriver.FirefoxOptions()
-    options.set_headless()
+    options.add_argument('-headless')
     driver = webdriver.Firefox(
         executable_path='/home/pi/gecko-dev/target/armv7-unknown-linux-gnueabihf/release/geckodriver', options=options)
 
