@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/python
 from flask import Flask, render_template, request
 from selenium import webdriver
 
