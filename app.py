@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3
 from flask import Flask, render_template, request
 from selenium import webdriver
+from subprocess import call
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -35,11 +36,12 @@ def start_sounds():
     sound_type = request.form['sound_type']
 
     if sound_type == DRILL:
-        driver.get(DRILL_URL)
+        # driver.get(DRILL_URL)
+        call(['cd %PROGRAMFILES%/VideoLAN/VLC/ && vlc.exe', DRILL_URL], shell=True)
     elif sound_type == BASS:
         driver.get(BASS_URL)
 
-    driver.find_element_by_class_name('ytp-play-button').click()
+    # driver.find_element_by_class_name('ytp-play-button').click()
     return 'Started.'
 
 
