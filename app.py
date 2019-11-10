@@ -8,6 +8,9 @@ app.config["DEBUG"] = True
 DRILL = 'drill'
 BASS = 'bass'
 
+display = Display(visible=0, size=(800, 600))
+display.start()
+
 
 @app.route('/', methods=['GET'])
 def index():
@@ -17,10 +20,8 @@ def index():
 @app.route('/start', methods=['POST'])
 def start_sounds():
     global driver
-    options = webdriver.FirefoxOptions()
-    options.add_argument('-headless')
     driver = webdriver.Firefox(
-        executable_path='/home/pi/gecko-dev/target/armv7-unknown-linux-gnueabihf/release/geckodriver', options=options)
+        executable_path='/home/pi/gecko-dev/target/armv7-unknown-linux-gnueabihf/release/geckodriver')
 
     sound_type = request.form['sound_type']
 
