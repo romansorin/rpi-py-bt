@@ -18,7 +18,7 @@ def index():
 def start_sounds():
     global driver
     driver = webdriver.Firefox(
-        executable_path='$HOME/gecko-dev/target/armv7-unknown-linux-gnueabihf/release/geckodriver')
+        executable_path='/home/pi/gecko-dev/target/armv7-unknown-linux-gnueabihf/release/geckodriver')
 
     sound_type = request.form['sound_type']
 
