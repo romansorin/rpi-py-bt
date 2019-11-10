@@ -17,7 +17,7 @@ def index():
 @app.route('/start', methods=['POST'])
 def start_sounds():
     driver = webdriver.Firefox(
-        executable_path="/usr/bin")
+        executable_path=r'/usr/bin/geckodriver')
     sound_type = request.form['sound_type']
 
     if sound_type == DRILL:
