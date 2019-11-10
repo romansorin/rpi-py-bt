@@ -6,9 +6,21 @@ import time
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+app.config["OS"] = 'Windows'
 
 DRILL = 'drill'
 BASS = 'bass'
+
+options = webdriver.FirefoxOptions()
+options.headless = True
+
+if app.config["OS"] == 'Windows':
+    executable_path = './geckodriver.exe'
+elif app.config["OS"] == 'Linux':
+    executable_path = '/home/pi/gecko-dev/target/armv7-unknown-linux-gnueabihf/release/geckodriver'
+
+driver = webdriver.Firefox(
+    executable_path=executable_path, options=options)
 
 
 @app.route('/', methods=['GET'])
@@ -18,37 +30,20 @@ def index():
 
 @app.route('/start', methods=['POST'])
 def start_sounds():
-    # global driver
-    # options = webdriver.FirefoxOptions()
-    # options.headless = True
-    # driver = webdriver.Firefox(
-    #     executable_path='/home/pi/gecko-dev/target/armv7-unknown-linux-gnueabihf/release/geckodriver', firefox_options=options)
-
     sound_type = request.form['sound_type']
 
     if sound_type == DRILL:
-
-        player = vlc.MediaPlayer(
-            'https://www.youtube.com/watch?v=fc7XA4bo4bc&t=2683s')
-        print(player.video_get_adjust_float
-              )
-        time.sleep(3)
-        print(player.will_play())
-        print(player.is_playing())
-        # driver.get('https://www.youtube.com/watch?v=fc7XA4bo4bc&t=2683s')
+        driver.get('https://www.youtube.com/watch?v=fc7XA4bo4bc&t=2683s')
     elif sound_type == BASS:
-        vlc.MediaPlayer('https://www.youtube.com/watch?v=H8pZmH5DHnQ&t=408s')
+        driver.get('https://www.youtube.com/watch?v=H8pZmH5DHnQ&t=408s')
 
-        # driver.get('https://www.youtube.com/watch?v=H8pZmH5DHnQ&t=408s')
-
-        # driver.find_element_by_class_name('ytp-play-button').click()
-
+    driver.find_element_by_class_name('ytp-play-button').click()
     return 'Started.'
 
 
 @app.route('/end', methods=['POST'])
 def end_sounds():
-    # driver.quit()
+    driver.quit()
 
     return 'Ended.'
 
