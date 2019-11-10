@@ -17,7 +17,9 @@ def index():
 @app.route('/start', methods=['POST'])
 def start_sounds():
 
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    driver = webdriver.Chrome(chrome_options=options)
 
     sound_type = request.form['sound_type']
 
