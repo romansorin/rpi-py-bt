@@ -17,8 +17,10 @@ def index():
 @app.route('/start', methods=['POST'])
 def start_sounds():
     global driver
+    options = webdriver.FirefoxOptions()
+    options.add_argument(headless=True)
     driver = webdriver.Firefox(
-        executable_path='/home/pi/gecko-dev/target/armv7-unknown-linux-gnueabihf/release/geckodriver')
+        executable_path='/home/pi/gecko-dev/target/armv7-unknown-linux-gnueabihf/release/geckodriver', firefox_options=options)
 
     sound_type = request.form['sound_type']
 
