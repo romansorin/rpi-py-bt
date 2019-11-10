@@ -15,15 +15,15 @@ def index():
 
 @app.route('/start', methods=['POST'])
 def start_sounds():
-    chrome = webdriver.Chrome()
+    driver = webdriver.Firefox()
     sound_type = request.form['sound_type']
 
     if sound_type == DRILL:
-        chrome.get('https://www.youtube.com/watch?v=fc7XA4bo4bc&t=2683s')
+        driver.get('https://www.youtube.com/watch?v=fc7XA4bo4bc&t=2683s')
     elif sound_type == BASS:
-        chrome.get('https://www.youtube.com/watch?v=H8pZmH5DHnQ&t=408s')
+        driver.get('https://www.youtube.com/watch?v=H8pZmH5DHnQ&t=408s')
 
-    chrome.find_element_by_class_name('ytp-play-button').click()
+    driver.find_element_by_class_name('ytp-play-button').click()
     return 'Started.'
 
 
