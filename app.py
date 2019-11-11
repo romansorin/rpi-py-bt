@@ -5,7 +5,7 @@ from subprocess import call
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-app.config["OS"] = 'Windows'
+app.config["OS"] = 'Linux'
 app.config["HOST"] = '0.0.0.0'
 app.config["PORT"] = '8090'
 
