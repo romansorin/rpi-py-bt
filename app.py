@@ -37,7 +37,7 @@ def start_sounds():
 
     if sound_type == DRILL:
         # driver.get(DRILL_URL)
-        call(['cd %PROGRAMFILES%/VideoLAN/VLC/ && vlc.exe', DRILL_URL], shell=True)
+        call(['cvlc --no-video', DRILL_URL])
     elif sound_type == BASS:
         driver.get(BASS_URL)
 
